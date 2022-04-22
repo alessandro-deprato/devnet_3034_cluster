@@ -12,7 +12,7 @@ module "terraform-intersight-iks" {
   # Kubernetes Cluster Profile  Adjust the values as needed.
   cluster = {
     name                = "iks_terraform_cluster"
-    action              = "Unassign"
+    action              = "Deploy"
     wait_for_completion = true
     worker_nodes        = 2
     load_balancers      = 2
@@ -70,8 +70,8 @@ module "terraform-intersight-iks" {
   # Runtime Policy (To create new change "use_existing" to 'false' and set "create_new' to 'true' uncomment variables and modify them to meet your needs.)
   # Set both variables to 'false' if this policy is not needed.
   runtime_policy = {
-    use_existing         = false
-    create_new           = false
+    use_existing = false
+    create_new   = false
   }
 
   # Infrastructure Configuration Policy (To create new change "use_existing" to 'false' and uncomment variables and modify them to meet your needs.)
