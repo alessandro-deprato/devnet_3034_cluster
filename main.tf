@@ -14,9 +14,9 @@ module "terraform-intersight-iks" {
     name                = "iks_terraform_cluster"
     action              = "Unassign"
     wait_for_completion = true
-    worker_nodes        = 1
+    worker_nodes        = 2
     load_balancers      = 2
-    worker_max          = 2
+    worker_max          = 3
     control_nodes       = 1
     ssh_user            = var.ssh_user
     ssh_public_key      = var.ssh_key
@@ -47,8 +47,8 @@ module "terraform-intersight-iks" {
   k8s_network = {
     use_existing = false
     name         = "iks_terraform_int_network_pool"
-    pod_cidr     = "100.65.0.0/16"
-    service_cidr = "100.64.0.0/24"
+    pod_cidr     = "100.96.0.0/16"
+    service_cidr = "100.97.0.0/22"
     cni          = "Calico"
   }
 
@@ -72,19 +72,6 @@ module "terraform-intersight-iks" {
   runtime_policy = {
     use_existing         = false
     create_new           = false
-    name                 = "iks_terraform_runtime"
-    http_proxy_hostname  = ""
-    http_proxy_port      = null
-    http_proxy_protocol  = ""
-    http_proxy_username  = null
-    http_proxy_password  = null
-    https_proxy_hostname = ""
-    https_proxy_port     = null
-    https_proxy_protocol = ""
-    https_proxy_username = null
-    https_proxy_password = null
-    docker_no_proxy      = null
-
   }
 
   # Infrastructure Configuration Policy (To create new change "use_existing" to 'false' and uncomment variables and modify them to meet your needs.)
@@ -107,8 +94,8 @@ module "terraform-intersight-iks" {
     use_existing = false
     name         = "iks_terraform_vm"
     cpu          = 4
-    memory       = 16386
-    disk_size    = 40
+    memory       = 8192
+    disk_size    = 30
   }
 
   # Organization and Tag Information
