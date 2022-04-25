@@ -15,7 +15,7 @@ module "terraform-intersight-iks" {
     action              = "Deploy"
     wait_for_completion = false
     worker_nodes        = 1
-    load_balancers      = 2
+    load_balancers      = 5
     worker_max          = 2
     control_nodes       = 1
     ssh_user            = var.ssh_user
