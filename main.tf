@@ -13,10 +13,10 @@ module "terraform-intersight-iks" {
   cluster = {
     name                = "iks_terraform_cluster"
     action              = "Unassign"
-    wait_for_completion = true
-    worker_nodes        = 2
+    wait_for_completion = false
+    worker_nodes        = 1
     load_balancers      = 2
-    worker_max          = 3
+    worker_max          = 2
     control_nodes       = 1
     ssh_user            = var.ssh_user
     ssh_public_key      = var.ssh_key
