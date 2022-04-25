@@ -12,8 +12,8 @@ module "terraform-intersight-iks" {
   # Kubernetes Cluster Profile  Adjust the values as needed.
   cluster = {
     name                = "iks_terraform_cluster"
-    action              = "Delete"
-    wait_for_completion = true
+    action              = "Deploy"
+    wait_for_completion = false
     worker_nodes        = 2
     load_balancers      = 2
     worker_max          = 3
@@ -35,7 +35,7 @@ module "terraform-intersight-iks" {
 
   # Sysconfig Policy (UI Reference NODE OS Configuration) (To create new change "use_existing" to 'false' uncomment variables and modify them to meet your needs.)
   sysconfig = {
-    use_existing = false
+    use_existing = true
     name         = "iks_terraform_syconfig"
     domain_name  = "depexp.local"
     timezone     = "Europe/Rome"
@@ -45,7 +45,7 @@ module "terraform-intersight-iks" {
 
   # Kubernetes Network CIDR (To create new change "use_existing" to 'false' uncomment variables and modify them to meet your needs.)
   k8s_network = {
-    use_existing = false
+    use_existing = true
     name         = "iks_terraform_int_network_pool"
     pod_cidr     = "100.96.0.0/16"
     service_cidr = "100.97.0.0/22"
@@ -54,7 +54,7 @@ module "terraform-intersight-iks" {
 
   # Version policy (To create new change "useExisting" to 'false' uncomment variables and modify them to meet your needs.)
   versionPolicy = {
-    useExisting    = false
+    useExisting    = true
     policyName     = "iks_terraform_version"
     iksVersionName = "1.21.10-iks.0"
   }
@@ -62,7 +62,7 @@ module "terraform-intersight-iks" {
   # Trusted Registry Policy (To create new change "use_existing" to 'false' and set "create_new' to 'true' uncomment variables and modify them to meet your needs.)
   # Set both variables to 'false' if this policy is not needed.
   tr_policy = {
-    use_existing = false
+    use_existing = true
     create_new   = false
     name         = "trusted-registry"
   }
@@ -70,13 +70,13 @@ module "terraform-intersight-iks" {
   # Runtime Policy (To create new change "use_existing" to 'false' and set "create_new' to 'true' uncomment variables and modify them to meet your needs.)
   # Set both variables to 'false' if this policy is not needed.
   runtime_policy = {
-    use_existing = false
+    use_existing = true
     create_new   = false
   }
 
   # Infrastructure Configuration Policy (To create new change "use_existing" to 'false' and uncomment variables and modify them to meet your needs.)
   infraConfigPolicy = {
-    use_existing = false
+    use_existing = true
     platformType = "esxi"
     targetName   = var.vcenter
     policyName   = "iks_terraform_infra"
@@ -91,7 +91,7 @@ module "terraform-intersight-iks" {
 
   # Worker Node Instance Type (To create new change "use_existing" to 'false' and uncomment variables and modify them to meet your needs.)
   instance_type = {
-    use_existing = false
+    use_existing = true
     name         = "iks_terraform_vm"
     cpu          = 4
     memory       = 8192
