@@ -62,7 +62,7 @@ module "terraform-intersight-iks" {
   # Trusted Registry Policy (To create new change "use_existing" to 'false' and set "create_new' to 'true' uncomment variables and modify them to meet your needs.)
   # Set both variables to 'false' if this policy is not needed.
   tr_policy = {
-    use_existing = true
+    use_existing = false
     create_new   = false
     name         = "trusted-registry"
   }
@@ -70,7 +70,7 @@ module "terraform-intersight-iks" {
   # Runtime Policy (To create new change "use_existing" to 'false' and set "create_new' to 'true' uncomment variables and modify them to meet your needs.)
   # Set both variables to 'false' if this policy is not needed.
   runtime_policy = {
-    use_existing = true
+    use_existing = false
     create_new   = false
   }
 
