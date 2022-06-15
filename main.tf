@@ -12,7 +12,7 @@ module "terraform-intersight-iks" {
   # Kubernetes Cluster Profile  Adjust the values as needed.
   cluster = {
     name                = "iks_terraform_cluster"
-    action              = "Deploy"
+    action              = "Unassign"
     wait_for_completion = false
     worker_nodes        = 1
     load_balancers      = 5
